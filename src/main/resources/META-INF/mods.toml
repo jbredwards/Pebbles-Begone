@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+license="MIT Licence"
+
+[[mods]]
+modId="pebbles_begone"
+version="1.0"
+displayName="Pebbles Begone"
+displayURL="https://github.com/jbredwards/Pebbles-Begone"
+authors="jbredwards"
+description='''
+A lightweight mod that removes the pebbles from Botania: Garden of Glass.
+'''
