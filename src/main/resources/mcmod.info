@@ -3,7 +3,6 @@
   "name": "Pebbles Begone",
   "description": "A lightweight mod that removes the pebbles from Botania: Garden of Glass.",
   "version": "1.0",
-  "mcversion": "1.7.10",
   "url": "https://github.com/jbredwards/Pebbles-Begone",
   "authorList": ["jbredwards"]
 }]

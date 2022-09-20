@@ -1,8 +1,8 @@
-package git.jbredwards.pebbles_begone;
+package git.jbredwards;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -18,10 +18,9 @@ import java.util.Map;
  *
  */
 @IFMLLoadingPlugin.SortingIndex(1001)
-@IFMLLoadingPlugin.MCVersion("1.7.10")
 @IFMLLoadingPlugin.Name("Pebbles Begone Plugin")
-@Mod(modid = "pebbles_begone", name = "Pebbles Begone", version = "1.0")
-public final class Main implements IFMLLoadingPlugin
+@Mod(modid = "pebbles_begone", name = "Pebbles Begone", version = "1.0", acceptedMinecraftVersions = "[1.8.9,1.12.2]")
+public final class PebblesBegone implements IFMLLoadingPlugin
 {
     static boolean obfuscated = true;
     public static final class Transformer implements IClassTransformer, Opcodes
@@ -37,17 +36,14 @@ public final class Main implements IFMLLoadingPlugin
                     if(method.name.equals("onPlayerInteract")) {
                         /*
                          * Old code:
-                         * Block block = event.world.getBlock(event.x, event.y, event.z);
+                         * Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
                          *
                          * New code:
                          * Block block = null;
                          */
                         for(AbstractInsnNode insn : method.instructions.toArray()) {
-                            if(insn instanceof MethodInsnNode && ((MethodInsnNode)insn).name.equals(obfuscated ? "func_147439_a" : "getBlock")) {
+                            if(insn instanceof MethodInsnNode && ((MethodInsnNode)insn).name.equals(obfuscated ? "func_177230_c" : "getBlock")) {
                                 method.instructions.insert(insn, new InsnNode(ACONST_NULL));
-                                method.instructions.remove(insn.getPrevious());
-                                method.instructions.remove(insn.getPrevious());
-                                method.instructions.remove(insn.getPrevious());
                                 method.instructions.remove(insn.getPrevious());
                                 method.instructions.remove(insn.getPrevious());
                                 method.instructions.remove(insn.getPrevious());
@@ -72,9 +68,7 @@ public final class Main implements IFMLLoadingPlugin
 
     @Nonnull
     @Override
-    public String[] getASMTransformerClass() {
-        return new String[] {"git.jbredwards.pebbles_begone.Main$Transformer"};
-    }
+    public String[] getASMTransformerClass() { return new String[] {"git.jbredwards.PebblesBegone$Transformer"}; }
 
     @Override
     public void injectData(@Nonnull Map<String, Object> data) {
