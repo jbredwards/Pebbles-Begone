@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'forge'
 
 version = 'v1.0-mc1.7.10'
-group = 'git.jbredwards.pebbles_begone' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'git.jbredwards' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Pebbles-Begone'
 
 minecraft {
@@ -30,12 +30,12 @@ minecraft {
 jar { 
     manifest { 
         attributes([
-            'FMLCorePlugin': 'git.jbredwards.pebbles_begone.Main',
+            'FMLCorePlugin': 'git.jbredwards.PebblesBegone',
             'FMLCorePluginContainsFMLMod': 'true'
         ])
     }
 }
 
 //for applying asm with intellij
-runClient { jvmArgs '-Dfml.coreMods.load=git.jbredwards.pebbles_begone.Main' }
-runServer { jvmArgs '-Dfml.coreMods.load=git.jbredwards.pebbles_begone.Main' }
+runClient { jvmArgs '-Dfml.coreMods.load=git.jbredwards.PebblesBegone' }
+runServer { jvmArgs '-Dfml.coreMods.load=git.jbredwards.PebblesBegone' }

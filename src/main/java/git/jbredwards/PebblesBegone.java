@@ -1,4 +1,4 @@
-package git.jbredwards.pebbles_begone;
+package git.jbredwards;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
@@ -21,7 +21,7 @@ import java.util.Map;
 @IFMLLoadingPlugin.MCVersion("1.7.10")
 @IFMLLoadingPlugin.Name("Pebbles Begone Plugin")
 @Mod(modid = "pebbles_begone", name = "Pebbles Begone", version = "1.0", dependencies = "required-after:Botania;required-after:GardenOfGlass")
-public final class Main implements IFMLLoadingPlugin
+public final class PebblesBegone implements IFMLLoadingPlugin
 {
     static boolean obfuscated = true;
     public static final class Transformer implements IClassTransformer, Opcodes
@@ -73,7 +73,7 @@ public final class Main implements IFMLLoadingPlugin
     @Nonnull
     @Override
     public String[] getASMTransformerClass() {
-        return new String[] {"git.jbredwards.pebbles_begone.Main$Transformer"};
+        return new String[] {"git.jbredwards.PebblesBegone$Transformer"};
     }
 
     @Override
