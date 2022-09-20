@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge'
+            url = 'http://files.minecraftforge.net/maven'
+        }
+        maven {
+            name = 'sonatype'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+version = 'v1.0-mc1.7.10'
+group = 'git.jbredwards.pebbles_begone' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'Pebbles-Begone'
+
+minecraft {
+    version = '1.7.10-10.13.4.1614-1.7.10'
+    runDir = 'run'
+}
+
+//for applying asm outside dev environment
+jar { 
+    manifest { 
+        attributes([
+            'FMLCorePlugin': 'git.jbredwards.pebbles_begone.Main',
+            'FMLCorePluginContainsFMLMod': 'true'
+        ])
+    }
+}
+
+//for applying asm with intellij
+runClient { jvmArgs '-Dfml.coreMods.load=git.jbredwards.pebbles_begone.Main' }
+runServer { jvmArgs '-Dfml.coreMods.load=git.jbredwards.pebbles_begone.Main' }
