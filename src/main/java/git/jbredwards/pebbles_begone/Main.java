@@ -20,7 +20,7 @@ import java.util.Map;
 @IFMLLoadingPlugin.SortingIndex(1001)
 @IFMLLoadingPlugin.MCVersion("1.7.10")
 @IFMLLoadingPlugin.Name("Pebbles Begone Plugin")
-@Mod(modid = "pebbles_begone", name = "Pebbles Begone", version = "1.0", dependencies = "required-after:Botania;required-after:GardenOfGlass;")
+@Mod(modid = "pebbles_begone", name = "Pebbles Begone", version = "1.0", dependencies = "required-after:Botania;required-after:GardenOfGlass")
 public final class Main implements IFMLLoadingPlugin
 {
     static boolean obfuscated = true;
